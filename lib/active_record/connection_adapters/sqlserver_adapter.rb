@@ -730,6 +730,10 @@ module ActiveRecord
       ensure
         do_execute "USE #{existing_database}" if name.to_s == existing_database 
       end
+      
+      def recreate_database!
+        recreate_database(current_database.to_s)
+      end
 
       def drop_database(name)
         retry_count = 0
